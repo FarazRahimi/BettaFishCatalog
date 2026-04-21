@@ -83,11 +83,23 @@ function editCardContent(card, betta) {
 // This calls the addCards() function when the page is first loaded
 document.addEventListener("DOMContentLoaded", showCards);
 
+const bettaFacts = [
+  "Betta fish can breathe air from the surface thanks to a unique organ called a labyrinth.",
+  "In the wild, Bettas live in rice paddies and shallow ponds.",
+  "Male Bettas are famous for building 'bubble nests' on the water surface.",
+  "Bettas are highly intelligent and can actually be trained to do tricks!",
+  "A Betta's sleep cycle is similar to a human's; they like it dark at night.",
+  "Bettas have distinct personalities-some are shy, while others are very curious.",
+  "The 'tail' of a Betta is technically called a caudal fin.",
+  "Bettas can recognize their human owners and will often swim to the glass to say hi.",
+  "Wild Bettas are much duller in color than the ones bred for aquariums.",
+  "Bettas are carnivores and need a protein-rich diet to stay healthy."
+];
+
 function quoteAlert() {
-  console.log("Button Clicked!");
-  alert(
-    "I guess I can kiss heaven goodbye, because it got to be a sin to look this good!",
-  );
+  const randomIndex = Math.floor(Math.random() * bettaFacts.length);
+  const randomFact = bettaFacts[randomIndex];
+  alert("Betta Fact: " + randomFact);
 }
 
 function removeLastCard() {
