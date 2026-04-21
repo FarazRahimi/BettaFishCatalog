@@ -14,6 +14,14 @@
       <h1 class="title">Betta Fish Catalog</h1>
       <div class="filter-row">
         <input id="searchInput" type="text" placeholder="Search by name" title="Search by name" />
+        <select id="sortBy" title="Sort catalog items">
+          <option value="default">Sort By</option>
+          <option value="nameAsc">Name (A-Z)</option>
+          <option value="nameDesc">Name (Z-A)</option>
+          <option value="priceAsc">Price (Low-High)</option>
+          <option value="priceDesc">Price (High-Low)</option>
+        </select>
+        <button id="resetFiltersBtn" class="filter-action-btn" type="button">Reset Filters</button>
         <details class="filters-dropdown">
           <summary>Filters</summary>
           <div class="filters-panel">

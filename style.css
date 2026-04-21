@@ -50,6 +50,14 @@ body {
   min-width: 190px;
 }
 
+.filter-action-btn {
+  height: 38px;
+  font-size: 15px;
+  margin: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
 .filters-dropdown {
   position: relative;
 }

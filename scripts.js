@@ -98,6 +98,7 @@ function applyFilters() {
   const maxPrice = Number(document.getElementById("maxPriceFilter").value);
   const selectedColor = document.getElementById("colorFilter").value;
   const selectedCare = document.getElementById("careFilter").value;
+  const sortBy = document.getElementById("sortBy").value;
 
   displayedBettas = bettaCatalog.filter(function (betta) {
     const matchesName = betta.name.toLowerCase().includes(searchInput);
@@ -108,7 +109,28 @@ function applyFilters() {
     return matchesName && matchesPrice && matchesColor && matchesCare;
   });
 
+  sortDisplayedBettas(sortBy);
   showCards();
+}
+
+function sortDisplayedBettas(sortBy) {
+  if (sortBy === "nameAsc") {
+    displayedBettas.sort(function (a, b) {
+      return a.name.localeCompare(b.name);
+    });
+  } else if (sortBy === "nameDesc") {
+    displayedBettas.sort(function (a, b) {
+      return b.name.localeCompare(a.name);
+    });
+  } else if (sortBy === "priceAsc") {
+    displayedBettas.sort(function (a, b) {
+      return a.price - b.price;
+    });
+  } else if (sortBy === "priceDesc") {
+    displayedBettas.sort(function (a, b) {
+      return b.price - a.price;
+    });
+  }
 }
 
 function updatePriceRangeLabel() {
@@ -192,6 +214,20 @@ function setUpFilters() {
   document.getElementById("searchInput").addEventListener("input", applyFilters);
   document.getElementById("colorFilter").addEventListener("change", applyFilters);
   document.getElementById("careFilter").addEventListener("change", applyFilters);
+  document.getElementById("sortBy").addEventListener("change", applyFilters);
+  document.getElementById("resetFiltersBtn").addEventListener("click", resetFilters);
+}
+
+function resetFilters() {
+  document.getElementById("searchInput").value = "";
+  document.getElementById("colorFilter").value = "all";
+  document.getElementById("careFilter").value = "all";
+  document.getElementById("sortBy").value = "default";
+  document.getElementById("minPriceFilter").value = minCatalogPrice;
+  document.getElementById("maxPriceFilter").value = maxCatalogPrice;
+  updatePriceRangeLabel();
+  updatePriceSliderTrack();
+  applyFilters();
 }
 
 function editCardContent(card, betta) {
