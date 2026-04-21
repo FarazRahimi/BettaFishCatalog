@@ -40,6 +40,7 @@ const bettaCatalog = [
   { name: "Ruby", type: "Super Red", color: "Red", care: "Beginner", image: "assets/ruby.png", price: 14 },
   { name: "Marble", type: "Giant", color: "Blue/White", care: "Intermediate", image: "assets/marble.png", price: 60 }
 ];
+let displayedBettas = [...bettaCatalog];
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
@@ -49,25 +50,29 @@ function showCards() {
   cardContainer.innerHTML = "";
   const templateCard = document.querySelector(".card");
 
-  for (let i = 0; i < bettaCatalog.length; i++) {
-    let title = bettaCatalog[i].name;
-    let imageURL = bettaCatalog[i].image;
+  for (let i = 0; i < displayedBettas.length; i++) {
+    let betta = displayedBettas[i];
 
     const nextCard = templateCard.cloneNode(true); // Copy the template card
-    editCardContent(nextCard, title, imageURL); // Edit title and image
+    editCardContent(nextCard, betta); // Edit title and image
     cardContainer.appendChild(nextCard); // Add new card to the container
   }
 }
 
-function editCardContent(card, newTitle, newImageURL) {
+function editCardContent(card, betta) {
   card.style.display = "block";
 
   const cardHeader = card.querySelector("h2");
-  cardHeader.textContent = newTitle;
+  cardHeader.textContent = betta.name;
 
   const cardImage = card.querySelector("img");
-  cardImage.src = newImageURL;
-  cardImage.alt = newTitle + " Poster";
+  cardImage.src = betta.image;
+  cardImage.alt = betta.name + " Poster";
+
+  const bulletPoints = card.querySelectorAll("li");
+  bulletPoints[0].textContent = "Type: " + betta.type;
+  bulletPoints[1].textContent = "Color: " + betta.color;
+  bulletPoints[2].textContent = "Care: " + betta.care + " | $" + betta.price;
 
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
@@ -86,6 +91,6 @@ function quoteAlert() {
 }
 
 function removeLastCard() {
-  bettaCatalog.pop(); 
+  displayedBettas.pop();
   showCards(); // Call showCards again to refresh
 }
