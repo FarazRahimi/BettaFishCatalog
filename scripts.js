@@ -41,6 +41,8 @@ const bettaCatalog = [
   { name: "Marble", type: "Giant", color: "Blue/White", care: "Intermediate", image: "assets/marble.png", price: 60 }
 ];
 let displayedBettas = [...bettaCatalog];
+let minCatalogPrice = 0;
+let maxCatalogPrice = 0;
 // Your final submission should have much more data than this, and
 // you should use more than just an array of strings to store it all.
 
@@ -214,7 +216,12 @@ function editCardContent(card, betta) {
 }
 
 // This calls the addCards() function when the page is first loaded
-document.addEventListener("DOMContentLoaded", showCards);
+document.addEventListener("DOMContentLoaded", function () {
+  populateFilterOptions();
+  setUpPriceFilterRange();
+  setUpFilters();
+  showCards();
+});
 
 const bettaFacts = [
   "Betta fish can breathe air from the surface thanks to a unique organ called a labyrinth.",
