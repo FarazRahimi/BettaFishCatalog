@@ -2,69 +2,104 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #fdfcf0;
+  font-family: "Inter", "Segoe UI", "Helvetica", Arial, sans-serif;
+  color: #334155;
 }
 
 .main-header {
-  background-color: rgba(0, 0, 0, 0.3);
-  padding-bottom: 10px;
+  background-color: #d4e6ff;
+  border-bottom: 1px solid #dce6f3;
+  padding-top: 28px;
+  padding-bottom: 24px;
 }
 
 .title {
   text-align: center;
   margin: 0;
-  font-size: 8em;
-  font-family: "Helvetica";
-  font-weight: normal;
-  color: white;
+  font-size: 2.4em;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #2f3b52;
+}
+
+#catalogGrid {
+  display: grid;
+  grid-template-columns: minmax(280px, 340px) minmax(280px, 340px) minmax(280px, 340px);
+  justify-content: center;
+  gap: 20px;
+  padding-top: 28px;
+  padding-right: 24px;
+  padding-bottom: 24px;
+  padding-left: 24px;
 }
 
 #card-container {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
+  display: contents;
 }
 
 .card {
   width: 300px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 5px;
+  border: 1px solid #e3e9ef;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(47, 59, 82, 0.06);
+  background-color: #ffffff;
+  margin: 0;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 6px 16px rgba(47, 59, 82, 0.12);
+  transform: translateY(-2px);
 }
 
 .card-content {
   padding: 20px;
-  font-family: "Verdana";
-  color: #777;
+  color: #475569;
 }
 
 .card-content h2 {
   margin-top: 0;
+  margin-bottom: 12px;
   font-size: 20px;
+  color: #2f3b52;
 }
 
 .card img {
   width: 100%;
   height: auto;
+  border-radius: 10px;
+  border: 1px solid #eef2f7;
 }
 
 .footer {
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.3);
-  padding: 10px;
+  background-color: #e2f0cb;
+  border-top: 1px solid #d7e7be;
+  padding-top: 14px;
+  padding-right: 10px;
+  padding-bottom: 14px;
+  padding-left: 10px;
 }
 
 button {
   text-align: center;
-  background-color: #666;
-  border: none;
+  background-color: #ffffff;
+  border: 1px solid #d8e4f4;
   padding-left: 10px;
   padding-right: 10px;
   height: 40px;
   border-radius: 10px;
-  color: white;
-  font-size: 22px;
+  color: #2f3b52;
+  font-size: 17px;
   cursor: pointer;
   margin: 5px;
+  font-family: "Inter", "Segoe UI", "Helvetica", Arial, sans-serif;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  background-color: #f7fbff;
+  box-shadow: 0 3px 8px rgba(47, 59, 82, 0.08);
 }
