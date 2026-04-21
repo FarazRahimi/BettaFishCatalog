@@ -14,21 +14,26 @@
       <h1 class="title">Betta Fish Catalog</h1>
       <div class="filter-row">
         <input id="searchInput" type="text" placeholder="Search by name" title="Search by name" />
-        <div class="price-filter" title="Filter by price range">
-          <span id="priceRangeLabel">$0 - $0</span>
-          <div class="slider-wrap">
-            <div class="slider-track"></div>
-            <div id="sliderRangeFill"></div>
-            <input id="minPriceFilter" type="range" min="0" max="100" value="0" title="Minimum price" />
-            <input id="maxPriceFilter" type="range" min="0" max="100" value="100" title="Maximum price" />
+        <details class="filters-dropdown">
+          <summary>Filters</summary>
+          <div class="filters-panel">
+            <div class="price-filter" title="Filter by price range">
+              <span id="priceRangeLabel">$0 - $0</span>
+              <div class="slider-wrap">
+                <div class="slider-track"></div>
+                <div id="sliderRangeFill"></div>
+                <input id="minPriceFilter" type="range" min="0" max="100" value="0" title="Minimum price" />
+                <input id="maxPriceFilter" type="range" min="0" max="100" value="100" title="Maximum price" />
+              </div>
+            </div>
+            <select id="colorFilter" title="Filter by color">
+              <option value="all">All Colors</option>
+            </select>
+            <select id="careFilter" title="Filter by care level">
+              <option value="all">All Care Levels</option>
+            </select>
           </div>
-        </div>
-        <select id="colorFilter" title="Filter by color">
-          <option value="all">All Colors</option>
-        </select>
-        <select id="careFilter" title="Filter by care level">
-          <option value="all">All Care Levels</option>
-        </select>
+        </details>
       </div>
     </header>
     <div id="catalogGrid">

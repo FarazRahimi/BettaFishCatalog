@@ -50,15 +50,55 @@ body {
   min-width: 190px;
 }
 
-.price-filter {
+.filters-dropdown {
+  position: relative;
+}
+
+.filters-dropdown > summary {
+  list-style: none;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #d8e4f4;
+  background-color: #ffffff;
+  color: #2f3b52;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 15px;
+  font-family: "Inter", "Segoe UI", "Helvetica", Arial, sans-serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.filters-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.filters-panel {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  width: 280px;
   background-color: #ffffff;
   border: 1px solid #d8e4f4;
-  border-radius: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(47, 59, 82, 0.12);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.price-filter {
+  background-color: #f9fcff;
+  border: 1px solid #e3edf9;
+  border-radius: 8px;
   padding-top: 6px;
   padding-right: 10px;
   padding-bottom: 6px;
   padding-left: 10px;
-  min-width: 220px;
+  min-width: 0;
 }
 
 #priceRangeLabel {
