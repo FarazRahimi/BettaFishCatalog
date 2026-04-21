@@ -23,6 +23,140 @@ body {
   color: #2f3b52;
 }
 
+.filter-row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  flex-wrap: wrap;
+}
+
+.filter-row input,
+.filter-row select {
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #d8e4f4;
+  background-color: #ffffff;
+  color: #2f3b52;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+  font-family: "Inter", "Segoe UI", "Helvetica", Arial, sans-serif;
+}
+
+.filter-row input {
+  min-width: 190px;
+}
+
+.price-filter {
+  background-color: #ffffff;
+  border: 1px solid #d8e4f4;
+  border-radius: 10px;
+  padding-top: 6px;
+  padding-right: 10px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  min-width: 220px;
+}
+
+#priceRangeLabel {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 4px;
+  color: #2f3b52;
+}
+
+.slider-wrap {
+  position: relative;
+  height: 26px;
+}
+
+#minPriceFilter,
+#maxPriceFilter {
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  height: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+}
+
+#minPriceFilter::-webkit-slider-runnable-track,
+#maxPriceFilter::-webkit-slider-runnable-track {
+  height: 4px;
+  background: transparent;
+}
+
+#minPriceFilter::-moz-range-track,
+#maxPriceFilter::-moz-range-track {
+  height: 4px;
+  background: transparent;
+  border: 0;
+}
+
+#minPriceFilter::-webkit-slider-thumb,
+#maxPriceFilter::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #2f3b52;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(47, 59, 82, 0.25);
+  pointer-events: auto;
+  cursor: pointer;
+  margin-top: -5px;
+}
+
+#minPriceFilter::-moz-range-thumb,
+#maxPriceFilter::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #2f3b52;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(47, 59, 82, 0.25);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+#minPriceFilter {
+  z-index: 2;
+}
+
+#maxPriceFilter {
+  z-index: 1;
+}
+
+.slider-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 11px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: #dbe6f4;
+}
+
+#sliderRangeFill {
+  position: absolute;
+  top: 11px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: #8fb1db;
+}
+
 #catalogGrid {
   display: grid;
   grid-template-columns: minmax(280px, 340px) minmax(280px, 340px) minmax(280px, 340px);

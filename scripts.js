@@ -59,6 +59,139 @@ function showCards() {
   }
 }
 
+function populateFilterOptions() {
+  const colorFilter = document.getElementById("colorFilter");
+  const careFilter = document.getElementById("careFilter");
+  const colors = [];
+  const careLevels = [];
+
+  for (let i = 0; i < bettaCatalog.length; i++) {
+    const betta = bettaCatalog[i];
+    if (!colors.includes(betta.color)) {
+      colors.push(betta.color);
+    }
+    if (!careLevels.includes(betta.care)) {
+      careLevels.push(betta.care);
+    }
+  }
+
+  for (let i = 0; i < colors.length; i++) {
+    const option = document.createElement("option");
+    option.value = colors[i];
+    option.textContent = colors[i];
+    colorFilter.appendChild(option);
+  }
+
+  for (let i = 0; i < careLevels.length; i++) {
+    const option = document.createElement("option");
+    option.value = careLevels[i];
+    option.textContent = careLevels[i];
+    careFilter.appendChild(option);
+  }
+}
+
+function applyFilters() {
+  const searchInput = document.getElementById("searchInput").value.toLowerCase().trim();
+  const minPrice = Number(document.getElementById("minPriceFilter").value);
+  const maxPrice = Number(document.getElementById("maxPriceFilter").value);
+  const selectedColor = document.getElementById("colorFilter").value;
+  const selectedCare = document.getElementById("careFilter").value;
+
+  displayedBettas = bettaCatalog.filter(function (betta) {
+    const matchesName = betta.name.toLowerCase().includes(searchInput);
+    const matchesPrice = betta.price >= minPrice && betta.price <= maxPrice;
+    const matchesColor = selectedColor === "all" || betta.color === selectedColor;
+    const matchesCare = selectedCare === "all" || betta.care === selectedCare;
+
+    return matchesName && matchesPrice && matchesColor && matchesCare;
+  });
+
+  showCards();
+}
+
+function updatePriceRangeLabel() {
+  const minPrice = document.getElementById("minPriceFilter").value;
+  const maxPrice = document.getElementById("maxPriceFilter").value;
+  document.getElementById("priceRangeLabel").textContent = "$" + minPrice + " - $" + maxPrice;
+}
+
+function updatePriceSliderTrack() {
+  const minSlider = document.getElementById("minPriceFilter");
+  const maxSlider = document.getElementById("maxPriceFilter");
+  const fill = document.getElementById("sliderRangeFill");
+
+  const minValue = Number(minSlider.value);
+  const maxValue = Number(maxSlider.value);
+  const min = Number(minSlider.min);
+  const max = Number(minSlider.max);
+  const range = max - min;
+
+  const leftPercent = ((minValue - min) / range) * 100;
+  const rightPercent = ((maxValue - min) / range) * 100;
+
+  fill.style.left = leftPercent + "%";
+  fill.style.width = rightPercent - leftPercent + "%";
+}
+
+function handleMinPriceChange() {
+  const minSlider = document.getElementById("minPriceFilter");
+  const maxSlider = document.getElementById("maxPriceFilter");
+  if (Number(minSlider.value) > Number(maxSlider.value)) {
+    minSlider.value = maxSlider.value;
+  }
+  updatePriceRangeLabel();
+  updatePriceSliderTrack();
+  applyFilters();
+}
+
+function handleMaxPriceChange() {
+  const minSlider = document.getElementById("minPriceFilter");
+  const maxSlider = document.getElementById("maxPriceFilter");
+  if (Number(maxSlider.value) < Number(minSlider.value)) {
+    maxSlider.value = minSlider.value;
+  }
+  updatePriceRangeLabel();
+  updatePriceSliderTrack();
+  applyFilters();
+}
+
+function setUpPriceFilterRange() {
+  minCatalogPrice = bettaCatalog[0].price;
+  maxCatalogPrice = bettaCatalog[0].price;
+
+  for (let i = 1; i < bettaCatalog.length; i++) {
+    if (bettaCatalog[i].price < minCatalogPrice) {
+      minCatalogPrice = bettaCatalog[i].price;
+    }
+    if (bettaCatalog[i].price > maxCatalogPrice) {
+      maxCatalogPrice = bettaCatalog[i].price;
+    }
+  }
+
+  const minSlider = document.getElementById("minPriceFilter");
+  const maxSlider = document.getElementById("maxPriceFilter");
+
+  minSlider.min = minCatalogPrice;
+  minSlider.max = maxCatalogPrice;
+  minSlider.value = minCatalogPrice;
+
+  maxSlider.min = minCatalogPrice;
+  maxSlider.max = maxCatalogPrice;
+  maxSlider.value = maxCatalogPrice;
+
+  minSlider.addEventListener("input", handleMinPriceChange);
+  maxSlider.addEventListener("input", handleMaxPriceChange);
+
+  updatePriceRangeLabel();
+  updatePriceSliderTrack();
+}
+
+function setUpFilters() {
+  document.getElementById("searchInput").addEventListener("input", applyFilters);
+  document.getElementById("colorFilter").addEventListener("change", applyFilters);
+  document.getElementById("careFilter").addEventListener("change", applyFilters);
+}
+
 function editCardContent(card, betta) {
   card.style.display = "block";
 
