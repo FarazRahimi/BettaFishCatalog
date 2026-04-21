@@ -77,7 +77,7 @@ function editCardContent(card, betta) {
   // You can use console.log to help you debug!
   // View the output by right clicking on your website,
   // select "Inspect", then click on the "Console" tab
-  console.log("new card:", newTitle, "- html: ", card);
+  console.log("new card:", betta.name, "- html: ", card);
 }
 
 // This calls the addCards() function when the page is first loaded
